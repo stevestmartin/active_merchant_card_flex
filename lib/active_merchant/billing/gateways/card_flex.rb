@@ -164,6 +164,10 @@ module ActiveMerchant
           post[:expyear]  = creditcard.year
         end
 
+        def add_custom(post, options)
+          post[:custom1] = options[:customer] if options.has_key?(:customer)
+        end
+
         # add order id to charge
         def add_invoice(post, options)
           post[:merchantordernumber] = options[:order_id] if options.has_key?(:order_id)
