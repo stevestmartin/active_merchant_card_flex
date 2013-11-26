@@ -41,6 +41,7 @@ module ActiveMerchant
         post[:authonly] = 1
 
         add_address(post, options)
+        add_custom(post, options)
         add_invoice(post, options)
         add_payment_source(post, creditcard_or_credit_card_id, options)
 
@@ -76,6 +77,7 @@ module ActiveMerchant
       def credit(money, creditcard_or_credit_card_id, options = {})
         post = {}
         add_address(post, options)
+        add_custom(post, options)
         add_invoice(post, options)
         add_payment_source(post, creditcard_or_credit_card_id, options)
 
@@ -92,6 +94,7 @@ module ActiveMerchant
       def purchase(money, creditcard_or_credit_card_id, options = {})
         post = {}
         add_address(post, options)
+        add_custom(post, options)
         add_invoice(post, options)
         add_payment_source(post, creditcard_or_credit_card_id, options)
 
@@ -108,6 +111,7 @@ module ActiveMerchant
         post = {}
         post[:accttype] = 1
         add_address(post, options)
+        add_custom(post, options)
         add_creditcard(post, creditcard)
 
         commit(:profile_add, nil, post)
