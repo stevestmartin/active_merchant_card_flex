@@ -169,6 +169,7 @@ module ActiveMerchant
         end
 
         def add_custom(post, options)
+          post[:POCustomerRefID] = options[:customer] if options.has_key?(:customer)
           post[:custom1] = options[:customer] if options.has_key?(:customer)
         end
 
